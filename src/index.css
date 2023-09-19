@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: 0;
+}
+body {
+    font-family: "Nunito", sans-serif;
+}
+/* -----------------registration page----------------- */
+.box {
+    margin-top: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.headdingTop {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.headdingTop img {
+    margin-bottom: 42px;
+}
+.headdingTop h2{
+    font-size: 34px;
+    font-weight: 700;
+    color: #11175D;
+    margin-bottom: 11px;
+}
+.inputBox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+}
+.MuiTextField-root {
+    width: 500px;
+    
+}
+.MuiInputBase-root input {
+    font-weight: 600;
+    color: #11175D;
+    font-size: 16px;
+}
+.MuiButtonBase-root {
+    background-color: #086FA4 !important;
+    text-transform: capitalize !important;
+    border-radius: 30px !important;
+    padding: 20px 0 !important;
+}
