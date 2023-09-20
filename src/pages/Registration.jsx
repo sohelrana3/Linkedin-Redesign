@@ -1,8 +1,12 @@
 import React from "react";
 import { TextField, Button, Grid } from "@mui/material";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Registration = () => {
+    let [show, setshow] = useState(false);
     return (
         <Grid
             container
@@ -31,12 +35,30 @@ const Registration = () => {
                         variant="outlined"
                         margin="dense"
                     />
-                    <TextField
-                        id="outlined-basic"
-                        label="Password"
-                        variant="outlined"
-                        margin="dense"
-                    />
+                    <div className="password-icon">
+                        <TextField
+                            id="outlined-basic"
+                            label="Password"
+                            variant="outlined"
+                            margin="dense"
+                            type={show ? "text" : "password"}
+                        />
+                        {show ? (
+                            <AiFillEye
+                                onClick={() => setshow(!show)}
+                                className="eye-icon"
+                            />
+                        ) : (
+                            <AiFillEyeInvisible
+                                onClick={() => setshow(!show)}
+                                className="eye-icon"
+                            />
+                        )}
+                    </div>
+                    <h4 style={{ color: "#11175D" }}>
+                        Already have An Account <Link style={{color: "#086FA4"}} to="/login">Login</Link>
+                    </h4>
+
                     <Button variant="contained">Sing up</Button>
                 </div>
             </div>
