@@ -3,9 +3,66 @@ import { TextField, Button, Grid } from "@mui/material";
 import logo from "../assets/logo.png";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
+let inishallvalu = {
+    email: "",
+    password: "",
+    error: "",
+};
 
 const Login = () => {
+    const auth = getAuth();
     let [show, setshow] = useState(false);
+    let [value, setvalue] = useState(inishallvalu);
+    const notify = (mess) => toast(mess);
+    const navigiton = useNavigate();
+
+    //handleChange
+    let handleChange = (e) => {
+        setvalue({
+            ...value,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    // handleLogin button
+    let handleLogin = () => {
+        let { email, password } = value;
+        if (!email) {
+            setvalue({
+                ...value,
+                error: "Please your email addres ",
+            });
+            console.log(value);
+            return;
+        }
+        if (!password) {
+            setvalue({
+                ...value,
+                error: "Please Your password ",
+            });
+            return;
+        }
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((login) => {
+                // Signed in
+                console.log(login);
+                notify("Login Success");
+                setvalue({
+                    email: "",
+                    password: "",
+                });
+                navigiton("/linkedin");
+                // ...
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     return (
         <Grid
             container
@@ -27,6 +84,8 @@ const Login = () => {
                         label="Email Addres"
                         variant="outlined"
                         margin="dense"
+                        onChange={handleChange}
+                        name="email"
                     />
                     <div className="password-icon">
                         <TextField
@@ -34,7 +93,9 @@ const Login = () => {
                             label="Password"
                             variant="outlined"
                             margin="dense"
+                            onChange={handleChange}
                             type={show ? "text" : "password"}
+                            name="password"
                         />
                         {show ? (
                             <AiFillEye
@@ -55,7 +116,9 @@ const Login = () => {
                         </Link>
                     </h4>
 
-                    <Button variant="contained">Login</Button>
+                    <Button variant="contained" onClick={handleLogin}>
+                        Login
+                    </Button>
                 </div>
             </div>
         </Grid>

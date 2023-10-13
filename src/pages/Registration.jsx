@@ -1,9 +1,18 @@
 import React from "react";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    updateProfile,
+    sendEmailVerification,
+} from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 import { TextField, Button, Grid, Alert } from "@mui/material";
 import logo from "../assets/logo.png";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const inishallvalu = {
     email: "",
@@ -13,6 +22,10 @@ const inishallvalu = {
 };
 
 const Registration = () => {
+    const auth = getAuth();
+    const db = getDatabase();
+    const notify = (mess) => toast(mess);
+    const navigiton = useNavigate();
     let [show, setshow] = useState(false);
     let [value, setvalue] = useState(inishallvalu);
     //handleChange
@@ -53,6 +66,47 @@ const Registration = () => {
             ...value,
             error: "",
         });
+
+        // createUserWithEmailAndPassword
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((user) => {
+                // Signed up
+
+                updateProfile(auth.currentUser, {
+                    displayName: fullName,
+                }).then(() => {
+                    sendEmailVerification(auth.currentUser).then(() => {
+                        // Email verification sent!
+                        // ...
+                        console.log(user);
+
+                        set(ref(db, "users/" + user.user.uid), {
+                            username: fullName,
+                            email: email,
+                        }).then(() => {
+                            notify(
+                                "Hi" +
+                                    " " +
+                                    fullName +
+                                    " " +
+                                    "Registration success"
+                            );
+                            setvalue({
+                                email: "",
+                                fullname: "",
+                                password: "",
+                            });
+                            navigiton("/login");
+                        });
+                    });
+                });
+
+                // ...
+            })
+            .catch((error) => {
+                console.log(error);
+                // ..
+            });
     };
     return (
         <Grid
