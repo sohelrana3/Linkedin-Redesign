@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { TextField, Button, Grid } from "@mui/material";
+import { TextField, Button, Grid, Alert } from "@mui/material";
 import logo from "../assets/logo.png";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginData } from "../Slice/user/userSlice";
 
 let inishallvalu = {
     email: "",
@@ -19,6 +21,7 @@ const Login = () => {
     let [value, setvalue] = useState(inishallvalu);
     const notify = (mess) => toast(mess);
     const navigiton = useNavigate();
+    let dispatch = useDispatch();
 
     //handleChange
     let handleChange = (e) => {
@@ -48,9 +51,11 @@ const Login = () => {
         }
 
         signInWithEmailAndPassword(auth, email, password)
-            .then((login) => {
+            .then((user) => {
                 // Signed in
-                console.log(login);
+                console.log(user);
+                dispatch(loginData(user.user));
+                localStorage.setItem("user", JSON.stringify(user.user));
                 notify("Login Success");
                 setvalue({
                     email: "",
@@ -61,6 +66,10 @@ const Login = () => {
             })
             .catch((error) => {
                 console.log(error);
+                setvalue({
+                    ...value,
+                    error: "errr",
+                });
             });
     };
     return (
@@ -87,6 +96,10 @@ const Login = () => {
                         onChange={handleChange}
                         name="email"
                     />
+                    {value.error.includes("email") && (
+                        <Alert severity="error">{value.error}</Alert>
+                    )}
+
                     <div className="password-icon">
                         <TextField
                             id="outlined-basic"
@@ -97,6 +110,9 @@ const Login = () => {
                             type={show ? "text" : "password"}
                             name="password"
                         />
+                        {value.error.includes("password") && (
+                            <Alert severity="error">{value.error}</Alert>
+                        )}
                         {show ? (
                             <AiFillEye
                                 onClick={() => setshow(!show)}

@@ -83,6 +83,10 @@ const Registration = () => {
                         set(ref(db, "users/" + user.user.uid), {
                             username: fullName,
                             email: email,
+                            photoURL:
+                                "https://i.ibb.co/Sx0KcjN/User-Profile-PNG-Image.png",
+                            cover_picture:
+                                "https://i.ibb.co/G93NXJ1/Rectangle-3.png",
                         }).then(() => {
                             notify(
                                 "Hi" +
@@ -163,6 +167,7 @@ const Registration = () => {
                             margin="dense"
                             onChange={handleChange}
                             name="password"
+                            type={show ? "text" : "password"}
                             value={value.password}
                         />
                         {value.error.includes("password") && (

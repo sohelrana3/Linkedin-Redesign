@@ -14,7 +14,6 @@ import Feed from "./pages/Feed";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route>
@@ -43,7 +42,7 @@ function App() {
                 pauseOnHover
                 theme="light"
             />
-            <RouterProvider router={router} />;
+            <RouterProvider router={router} />
         </>
     );
 }

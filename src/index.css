@@ -5,7 +5,8 @@
     outline: 0;
 }
 body {
-    font-family: "Nunito", sans-serif;
+    font-family: "Barlow", sans-serif;
+    background-color: #e5e5e5;
 }
 /* -----------------registration page----------------- */
 .box {
@@ -22,10 +23,10 @@ body {
 .headdingTop img {
     margin-bottom: 42px;
 }
-.headdingTop h2{
+.headdingTop h2 {
     font-size: 34px;
     font-weight: 700;
-    color: #11175D;
+    color: #11175d;
     margin-bottom: 11px;
 }
 .inputBox {
@@ -35,25 +36,126 @@ body {
 }
 .MuiTextField-root {
     width: 500px;
-    
 }
 .MuiInputBase-root input {
     font-weight: 600;
-    color: #11175D;
+    color: #11175d;
     font-size: 16px;
 }
 .MuiButtonBase-root {
-    background-color: #086FA4 !important;
+    background-color: #086fa4 !important;
     text-transform: capitalize !important;
     border-radius: 30px !important;
     padding: 20px 0 !important;
 }
-.password-icon{
+.password-icon {
     position: relative;
 }
-.eye-icon{
+.eye-icon {
     position: absolute;
     top: 30px;
     right: 10px;
     font-size: 18px;
+}
+
+/* home pages */
+.out-pages {
+    width: 1440px;
+    margin: 0 auto;
+}
+header {
+    background-color: #fff;
+    padding: 17px 0;
+}
+
+.navbar {
+    width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+.nav-img {
+    width: 65%;
+}
+.nav-user {
+    display: flex;
+    align-items: start;
+    gap: 0 20px;
+    border-left: 1px solid #858383;
+    padding-left: 10px;
+}
+.nav-user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+header h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #181818;
+}
+/* profile */
+.home-page {
+    width: 920px;
+}
+.Profile {
+    margin-top: 20px;
+    position: relative;
+}
+.banner {
+    width: 920px;
+    height: 220px;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: -1;
+}
+.banner Button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: #181818 !important;
+    color: #ffff !important;
+    padding: 5px 15px !important;
+    border: none;
+    opacity: 70%;
+    cursor: pointer;
+    z-index: 999;
+}
+.model-cover {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+}
+.model-cover Button {
+    color: #ffff;
+}
+.profile-img img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    margin-top: -20px;
+    z-index: 2;
+    border: 10px solid #fff;
+    background-color: #fff;
+}
+.profile-info {
+    display: flex;
+    background-color: #fff;
+    padding: 0 25px;
+    border-radius: 0 0 10px 10px ;
+}
+.profile-info h2 {
+    margin-top: 25px;
+}
+
+
+.Profile-tab {
+    width: 100%;
+    background-color: #11175d;
+    border-radius: 10px;
+    margin: 30px 0;
 }
