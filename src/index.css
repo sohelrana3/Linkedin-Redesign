@@ -146,16 +146,75 @@ header h2 {
     display: flex;
     background-color: #fff;
     padding: 0 25px;
-    border-radius: 0 0 10px 10px ;
+    border-radius: 0 0 10px 10px;
+    gap: 25px;
+    padding-bottom: 35px;
+    width: 100%;
+}
+.profile-img {
+    width: 20%;
+}
+.profile-left {
+    width: 80%;
 }
 .profile-info h2 {
     margin-top: 25px;
+    font-size: 22px;
+    text-transform: capitalize;
+    font-weight: 800;
+    color: #181818;
+    margin-bottom: 10px;
+}
+.profile-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.profile-name span {
+    color: #181818;
+    font-size: 16px;
+    font-weight: 400;
+}
+.profile-info p {
+    color: #181818;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+.profile-info Button {
+    padding: 10px 20px !important;
+    border-radius: 10px !important;
+}
+.tag-edit {
+    display: flex;
+    justify-content: space-between;
+}
+.tag-edit .icon {
+    font-size: 25px;
+    color: #086fa4;
+    cursor: pointer;
 }
 
-
-.Profile-tab {
+.inputTag input {
     width: 100%;
-    background-color: #11175d;
-    border-radius: 10px;
-    margin: 30px 0;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+}
+
+.Contract-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #858383;
+}
+.Contract-top h3 {
+    text-transform: capitalize;
+    font-size: 18px;
+    font-family: 400;
+}
+.contract-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
