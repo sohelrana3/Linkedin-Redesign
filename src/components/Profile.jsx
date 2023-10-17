@@ -74,15 +74,9 @@ const Profile = () => {
         const coverRef = rref(db, "users/" + userData.uid);
         onValue(coverRef, (snapshot) => {
             setuser(snapshot.val());
+            console.log(snapshot.val());
         });
         // tagline
-        const tagRef = rref(db, "tagline/" + userData.uid);
-        onValue(tagRef, (snapshot) => {
-            console.log(snapshot.val().tag);
-            setvalueTag(snapshot.val().tag);
-            // setvalueTag(snapshot.val());
-            // console.log(valueTag);
-        });
     }, []);
     // handleCover
     let handleCover = () => {
@@ -153,8 +147,9 @@ const Profile = () => {
 
     //handleTagSubmit
     let handleTagSubmit = () => {
-        console.log(inputtag);
-        set(rref(db, "tagline/" + userData.uid), {
+        // console.log(inputtag);
+        set(rref(db, "users/" + userData.uid), {
+            ...user,
             tag: inputtag,
         }).then(() => {
             setOpentag(false);
@@ -238,10 +233,10 @@ const Profile = () => {
                         <span>Saint Petersburg, Russian Federation</span>
                     </div>
                     <div className="tag-edit">
-                        {valueTag ? (
-                            <p>{valueTag}</p>
-                        ) : (
+                        {user.tag == "" ? (
                             <p>Please Your Tagline...</p>
+                        ) : (
+                            <p>{user.tag}</p>
                         )}
 
                         <FiEdit onClick={handleOpentag} className="icon" />

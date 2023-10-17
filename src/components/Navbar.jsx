@@ -6,6 +6,9 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import About from "./About";
 import UserList from "./UserList";
+import FriendRequest from "./FriendRequest";
+import FriendList from "./FriendList"; 
+import Post from "./Post";
 
 const Navbar = () => {
     const [value, setValue] = useState("1");
@@ -32,8 +35,12 @@ const Navbar = () => {
                     </TabPanel>
                     <TabPanel value="2">
                         <UserList />
+                        <FriendRequest />
+                        <FriendList />
                     </TabPanel>
-                    <TabPanel value="3">Item Three</TabPanel>
+                    <TabPanel value="3">
+                        <Post />
+                    </TabPanel>
                 </TabContext>
             </Box>
         </div>

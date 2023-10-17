@@ -82,6 +82,7 @@ const Registration = () => {
 
                         set(ref(db, "users/" + user.user.uid), {
                             username: fullName,
+                            tag: "",
                             email: email,
                             photoURL:
                                 "https://i.ibb.co/Sx0KcjN/User-Profile-PNG-Image.png",
