@@ -82,6 +82,11 @@ const Feed = () => {
                 // An error happened.
             });
     };
+    let handleKeyPress = (e) => {
+        if (e.key == "Enter") {
+            handleSubmit();
+        }
+    };
 
     useEffect(() => {
         const posttRef = ref(db, "Linkdin-post/");
@@ -131,6 +136,7 @@ const Feed = () => {
                                 type="text"
                                 placeholder="What’s on your mind?"
                                 value={inputValue}
+                                onKeyUp={handleKeyPress}
                             />
                             <label>
                                 <BsFillFileImageFill className="file" />
@@ -164,7 +170,13 @@ const Feed = () => {
                                         <div>
                                             <h3>{item.postAdmin}</h3>
                                             <p>{item.tag}</p>
-                                            <p style={{fontSize:"12px", color: "e5e5e5", marginTop: "4px"}}>
+                                            <p
+                                                style={{
+                                                    fontSize: "12px",
+                                                    color: "e5e5e5",
+                                                    marginTop: "4px",
+                                                }}
+                                            >
                                                 {moment(
                                                     item.date,
                                                     "YYYYMMDD hh:mm"
@@ -199,7 +211,15 @@ const Feed = () => {
                                                             {item.postAdmin}
                                                         </h3>
                                                         <p>{item.tag}</p>
-                                                        <p style={{fontSize:"12px", color: "e5e5e5", marginTop: "4px"}}>
+                                                        <p
+                                                            style={{
+                                                                fontSize:
+                                                                    "12px",
+                                                                color: "e5e5e5",
+                                                                marginTop:
+                                                                    "4px",
+                                                            }}
+                                                        >
                                                             {moment(
                                                                 item.date,
                                                                 "YYYYMMDD"

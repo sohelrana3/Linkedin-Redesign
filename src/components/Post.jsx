@@ -64,6 +64,11 @@ const Post = () => {
             setimagesUrl("");
         });
     };
+    let handleKeyPrees = (e) => {
+        if (e.key == "Enter") {
+            handleSubmit();
+        }
+    };
 
     useEffect(() => {
         const posttRef = ref(db, "Linkdin-post/");
@@ -96,6 +101,7 @@ const Post = () => {
                             type="text"
                             placeholder="What’s on your mind?"
                             value={inputValue}
+                            onKeyUp={handleKeyPrees}
                         />
                         <label>
                             <BsFillFileImageFill className="file" />
