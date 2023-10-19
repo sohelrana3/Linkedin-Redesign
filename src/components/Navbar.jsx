@@ -9,6 +9,7 @@ import UserList from "./UserList";
 import FriendRequest from "./FriendRequest";
 import FriendList from "./FriendList"; 
 import Post from "./Post";
+import Projects from "./Projects";
 
 const Navbar = () => {
     const [value, setValue] = useState("1");
@@ -32,6 +33,7 @@ const Navbar = () => {
                     </Box>
                     <TabPanel value="1">
                         <About />
+                        <Projects />
                     </TabPanel>
                     <TabPanel value="2">
                         <UserList />

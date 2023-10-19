@@ -413,38 +413,54 @@ header h2 {
 .content {
     display: flex;
 }
-.date{
+.date {
     color: #11175d !important;
 }
 /* feed */
-.feed{
+.feed {
     display: flex;
     gap: 20px;
 }
-.feed-post{
+.feed-post {
     min-width: 920px;
     margin-top: 20px;
-   
-   
 }
 /* feed-profile */
-.feed-profile{
+.feed-profile {
     margin-top: 20px;
-   width: 290px;
+    width: 290px;
 }
 .feed-profile .user-profile {
     border-radius: 0px;
     overflow: hidden;
-    
 }
-.feed-profile .banner{
+.feed-profile .banner {
     width: 100%;
     height: 120px;
     border-radius: 0;
 }
-.feed-profile a{
-   text-decoration: none;
+.feed-profile a {
+    text-decoration: none;
 }
-.feed-profile p{
+.feed-profile p {
     margin-bottom: 25px;
+}
+/* projects */
+.projects-img {
+    position: relative;
+    padding: 20px 0 40px 0;
+}
+.projects-img img {
+    width: 100%;
+    height: 160px;
+}
+.projects {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+.fileupload{
+    font-size: 22px;
+    cursor: pointer;
 }
